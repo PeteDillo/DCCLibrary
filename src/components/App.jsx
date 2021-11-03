@@ -38,12 +38,20 @@ class App extends Component {
             bookNumber: tempBookNumber
         });
     }
+
+createBook = (newBook)=>{
+    this.books.push(newBook);
+    this.setState({
+        bookNumber:this.books.length - 1
+    })
+}
+
     render(){
         return(
             <div className="container-fluid">
                 <TitleBar />
                 <BookViewer book={this.books[this.state.bookNumber]} nextBook={this.goToNextBook} previousBook={this.goToPreviousBook} />
-                <BookCreator />
+                <BookCreator createNewBook={this.createBook}/>
                 <Footer />
             </div>
         )
